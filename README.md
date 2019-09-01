@@ -6,8 +6,12 @@
 # 环境要求
 
 开发环境：macOS Sierra 10.12.6
+
 Python版本：python 3.6
+
 浏览器驱动：Chrome
+
 Python依赖库：selenium, PTL, pytesseract
+
 
 
