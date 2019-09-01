@@ -18,7 +18,10 @@ Python依赖库：selenium, PTL, pytesseract
 在使用前，确保安装了 Chrome webdriver 并将其添加到系统路径下：
 
 * 前往Chrome浏览器官方驱动下载网址 https://chromedriver.chromium.org/downloads 选择对应版本下载并解压
-* 打开 terminal, 前往根目录 `cd ~`
+* 打开 terminal, 前往根目录： `cd ~`
+* 编辑 .bash_profile文件：`vim .bash_profile`
+* 不同操作系统下文件名可能不同，可能是 .profile 或 .bashrc 或 .bash_profile
+*
 
 
 
