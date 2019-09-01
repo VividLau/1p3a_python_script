@@ -47,6 +47,7 @@ Python依赖库：selenium, pillow, pytesseract
 # 验证码处理逻辑
 ### 使用开源OCR库tesseract，将图片验证码转化为字符串
 * 图片预处理，将彩色图片转化为黑白，并去除干扰
+
 ![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/img1.png)
 ![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/phase2_img1.png)
 
