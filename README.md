@@ -30,6 +30,10 @@ Python依赖库：selenium, pillow, pytesseract
 ### 确保安装 python 依赖库
 * 使用 `pip` 或者 `pip3`：`pip install pytesseract selenium pillow`
 
+### 运行脚本
+* clone this repo and cd to it
+* run `python 1p3.py` or `python3 1p3.py`
+
 
 
 
