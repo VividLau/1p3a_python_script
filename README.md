@@ -17,6 +17,13 @@ Python依赖库：selenium, pillow, pytesseract
 
 
 
+# 功能
+* 自动登录
+* 自动签到
+* 自动答题
+
+
+
 # 使用方法
 
 ### 在使用前，确保安装了 Chrome webdriver 并将其添加到系统路径下：
