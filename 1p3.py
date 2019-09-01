@@ -119,8 +119,8 @@ def daily_question(browser, wait):
     choose_btn = browser.find_element_by_xpath(f"//div[text()='  {answer}']/input")
     choose_btn.click()
 
-    # ans_btn = browser.find_element_by_xpath("//button[@name='submit'][@type='submit']")
-    # ans_btn.click()
+    ans_btn = browser.find_element_by_xpath("//button[@name='submit'][@type='submit']")
+    ans_btn.click()
     print("完成每日问答，大米+1\n=========================")
 
 def fill_captcha(browser, wait):
