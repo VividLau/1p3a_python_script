@@ -40,6 +40,14 @@ Python依赖库：selenium, pillow, pytesseract
 
 # 验证码处理逻辑
 ![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/img1.png)
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/phase2_img1.png)
+
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/img2.png)
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/phase2_img2.png)
+
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/img3.png)
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/phase2_img3.png)
+
 
 # TO DO
 * 更新题库
