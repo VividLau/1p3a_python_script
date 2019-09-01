@@ -9,7 +9,7 @@
 
 Python版本：python 3.6
 
-浏览器驱动：Chrome
+浏览器版本：Chrome 76.0.3809.100
 
 Python依赖库：selenium, PTL, pytesseract
 
