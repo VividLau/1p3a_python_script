@@ -11,7 +11,7 @@ Python版本：python 3.6
 
 浏览器版本：Chrome 76.0.3809.100
 
-Python依赖库：selenium, PTL, pytesseract
+Python依赖库：selenium, pillow, pytesseract
 
 # 使用方法
 
@@ -23,6 +23,12 @@ Python依赖库：selenium, PTL, pytesseract
 * 假设chrome driver的安装路径是 `/Users/usrname/Desktop/webauto/driver/` 注意，路径的最后一级仍然是文件夹而不是驱动文件 
 * 运行命令：`echo 'export PATH=${PATH}:/Users/usrname/Desktop/webauto/driver/' >> .bash_profile`
 * 运行命令 `source .bash_profile`
+
+### 确保安装 tesseract
+* 运行 `brew install tesseract`
+
+### 确保安装 python 依赖库
+* 使用 `pip` 或者 `pip3`：`pip install pytesseract selenium pillow`
 
 
 
