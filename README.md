@@ -19,9 +19,8 @@ Python依赖库：selenium, PTL, pytesseract
 
 * 前往Chrome浏览器官方驱动下载网址 https://chromedriver.chromium.org/downloads 选择对应版本下载并解压
 * 打开 terminal, 前往根目录： `cd ~`
-* 编辑 .bash_profile文件：`vim .bash_profile`
-* 不同操作系统下文件名可能不同，可能是 .profile 或 .bashrc 或 .bash_profile
-*
+* 编辑 .bash_profile文件，不同操作系统下文件名可能不同，可能是 .profile 或 .bashrc 或 .bash_profile , 可先分别 `cat 文件名` 来确认正确文件
+* 假设chrome driver的安装路径是 /Users/usrname/Desktop/webauto/driver/ 则在 .bash_profile 文件末尾更新路径，运行命令：`echo >> 'export PATH=${PATH}:/Users/usrname/Desktop/webauto/driver/'`
 
 
 
