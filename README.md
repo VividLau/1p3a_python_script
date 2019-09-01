@@ -13,5 +13,12 @@ Python版本：python 3.6
 
 Python依赖库：selenium, PTL, pytesseract
 
+# 使用方法
+
+在使用前，确保安装了 Chrome webdriver 并将其添加到系统路径下：
+
+* 前往Chrome浏览器官方驱动下载网址 https://chromedriver.chromium.org/downloads 选择对应版本下载并解压
+* 打开 terminal, 前往根目录 `cd ~`
+
 
 
