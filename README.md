@@ -34,6 +34,9 @@ Python依赖库：selenium, pillow, pytesseract
 * clone this repo and cd to it
 * run `python 1p3.py` or `python3 1p3.py`
 
+### LICENSE
+* DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+
 
 
 
