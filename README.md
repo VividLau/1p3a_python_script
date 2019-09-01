@@ -38,6 +38,9 @@ Python依赖库：selenium, pillow, pytesseract
 * clone this repo and cd to it
 * run `python 1p3.py` or `python3 1p3.py`
 
+# 验证码处理逻辑
+![Image text](https://github.com/VividLau/1p3a_python_script/blob/master/image/img1.png)
+
 # TO DO
 * 更新题库
 * 添加 遇到新题自动更新题库 功能 
