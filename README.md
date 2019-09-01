@@ -3,13 +3,7 @@
 
 这是一个个人学习项目，使用Selenium的python库实现浏览器的自动化。
 
-
-
-
-
-
-
-
+<br/><br/>
 
 # 环境要求
 
@@ -21,14 +15,14 @@ Python版本：python 3.6
 
 Python依赖库：selenium, pillow, pytesseract
 
-
+<br/><br/>
 
 # 功能
 * 自动登录
 * 自动签到
 * 自动答题
 
-
+<br/><br/>
 
 # 使用方法
 
@@ -55,7 +49,7 @@ Python依赖库：selenium, pillow, pytesseract
 * clone this repo and cd to it
 * run `python 1p3.py` or `python3 1p3.py`
 
-
+<br/><br/>
 
 # 验证码处理逻辑
 ### 使用开源OCR库tesseract，将图片验证码转化为字符串
@@ -73,15 +67,14 @@ Python依赖库：selenium, pillow, pytesseract
 * 图片切割，将图片按字符切割为四张小图片，使tesseract识别准确度提高
 * **仅适用于此种类型的图形验证码！**
 
-
-
+<br/><br/>
 
 # TO DO
 * 更新题库
 * 添加 遇到新题自动更新题库 功能 
 * find better way to wait fully loaded image, instead of using sleep() 
 
-
+<br/><br/>
 
 # LICENSE
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
