@@ -9,21 +9,19 @@ from PIL import Image
 import platform
 import uuid
 import captcha
+import json
 
 def login(browser, wait):
 
     if platform.system() == "Darwin" and hex(uuid.getnode()) == "0x3035add3a8d0":
-        conf_file = "dev-usrname"
+        conf_file = "dev-usrname.json"
     else:
-        conf_file = "usrname"
+        conf_file = "usrname.json"
 
     print("从配置文件中获取用户名和密码...")
-    usr_pwd = {}
 
     with open(conf_file) as config:
-        for line in config:
-            key, val = line.rstrip().split(":")
-            usr_pwd[key] = val 
+        usr_pwd = json.load(config)
     
     usr_name = usr_pwd["username"]
     password = usr_pwd["password"]
@@ -83,14 +81,13 @@ def get_answer(question):
 
     # 检查题库
     print(f"开始检索题库, 题目: {question}")
-    answer = ""
-    with open("question_list") as q_list:
-        for line in q_list:
-            q, answer = line.rstrip().split(":")
-            if q == question:
-                print(f"答案: {answer}")
-                break
-    return answer
+    with open("question_list.json") as f:
+        q_dict = json.load(f)
+    
+    try:
+        return q_dict[question]
+    except:
+        return ""
 
 def daily_question(browser, wait):
 
