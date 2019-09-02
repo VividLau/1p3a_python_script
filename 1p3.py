@@ -6,13 +6,16 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common import exceptions as selexception
 from PIL import Image
+import platform
 import uuid
 import captcha
 
 def login(browser, wait):
 
-    mac_uuid = hex(uuid.getnode())
-    conf_file = "dev-usrname" if mac_uuid == "0x3035add3a8d0" else "usrname"
+    if platform.system() == "Darwin" and hex(uuid.getnode()) == "0x3035add3a8d0":
+        conf_file = "dev-usrname"
+    else:
+        conf_file = "usrname"
 
     print("从配置文件中获取用户名和密码...")
     usr_pwd = {}
