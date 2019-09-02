@@ -29,14 +29,13 @@ def login(browser, wait):
     print("开始登录一亩三分地")
 
     # 登录
-    wait.until(ec.presence_of_element_located((By.XPATH, "//em[text()='登录']")))
+    login_btn_element = wait.until(ec.presence_of_element_located((By.XPATH, "//em[text()='登录']")))
     usr_name_element = browser.find_element_by_css_selector("input[id='ls_username']")
     usr_name_element.send_keys(usr_name)
 
     pwd_element = browser.find_element_by_css_selector("input[id='ls_password']")
     pwd_element.send_keys(password)
 
-    login_btn_element = browser.find_element_by_xpath("//em[text()='登录']")
     login_btn_element.click()
     wait.until(ec.presence_of_element_located((By.XPATH, '//a[text()="退出"]')))
 
@@ -52,8 +51,7 @@ def daily_check_in(browser, wait):
         check_element.click()
 
         # 自动选择表情：“开心”
-        wait.until(ec.presence_of_element_located((By.XPATH, '//li[@id="kx"]')))
-        happy_element = browser.find_element_by_css_selector("li[id='kx']")
+        happy_element = wait.until(ec.presence_of_element_located((By.XPATH, '//li[@id="kx"]')))
         happy_element.click()
 
         # 使用快速选择留言
@@ -86,7 +84,7 @@ def get_answer(question):
     
     try:
         return q_dict[question]
-    except:
+    except KeyError:
         return ""
 
 def daily_question(browser, wait):
@@ -101,11 +99,12 @@ def daily_question(browser, wait):
         pass
     
     # 等待 “开始答题” 或者 ”答题中“ 图标
-    two_icons = "img[src='source/plugin/ahome_dayquestion/images/ing.gif'], img[src='source/plugin/ahome_dayquestion/images/begin.gif']"
-    wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, two_icons)))
+    two_icons = "img[src='source/plugin/ahome_dayquestion/images/ing.gif'], img[src='source/plugin/ahome_dayquestion/images/start.gif']"
+    daily_q_element = wait.until(
+        ec.visibility_of_element_located((By.CSS_SELECTOR, two_icons))
+        )
 
     # 每日答题
-    daily_q_element = browser.find_element_by_xpath("//img[@src='source/plugin/ahome_dayquestion/images/ing.gif']/..")
     daily_q_element.click()
 
     # 填写验证码
@@ -118,10 +117,16 @@ def daily_question(browser, wait):
     if answer == "":
         print("今日问题未被收录入题库，跳过每日问答")
         return
+    else:
+        print(f"答案: {answer}")
 
     # 提交答案
-    choose_btn = browser.find_element_by_xpath(f"//div[text()='  {answer}']/input")
-    choose_btn.click()
+    try:
+        choose_btn = browser.find_element_by_xpath(f"//div[text()='  {answer}']/input")
+        choose_btn.click()
+    except selexception.NoSuchElementException:
+        print("题库答案过期，跳过每日问答！")
+        return
 
     ans_btn = browser.find_element_by_xpath("//button[@name='submit'][@type='submit']")
     ans_btn.click()
@@ -133,18 +138,16 @@ def fill_captcha(browser, wait):
     correct_res = "https://www.1point3acres.com/bbs/static/image/common/check_right.gif"
     wrong_res = "https://www.1point3acres.com/bbs/static/image/common/check_error.gif"
 
-    wait.until(ec.visibility_of_element_located((By.XPATH, "//input[@name='seccodeverify']")))
-    cap_input_element = browser.find_element_by_xpath("//input[@name='seccodeverify']")
+    cap_input_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//input[@name='seccodeverify']")))
     trial = 1
 
     while res_text == "" or res_text == wrong_res: # 验证码解码错误
 
         print(f"开始破解图形验证码，第次{trial}尝试...")
         # 重新获取验证码
-        wait.until(ec.visibility_of_element_located((By.XPATH, "//a[text()='换一个']")))
-        get_new_captcha = browser.find_element_by_xpath("//a[text()='换一个']")
+        get_new_captcha = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[text()='换一个']")))
         get_new_captcha.click()
-        wait.until(ec.visibility_of_element_located((By.XPATH, "//span[text()='输入下图中的字符']//img")))
+        captcha_img_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//span[text()='输入下图中的字符']//img")))
         sleep(1)
 
         captcha_img_element = browser.find_element_by_xpath("//span[text()='输入下图中的字符']//img")
