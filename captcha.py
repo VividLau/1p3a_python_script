@@ -42,7 +42,7 @@ def captcha_to_string(img):
     rgb_dict = defaultdict(int)
     ans = ""
 
-    show_image(img)
+    # show_image(img)
 
     pix = img.load()
     width = img.size[0]
@@ -60,7 +60,7 @@ def captcha_to_string(img):
             else:
                 img.putpixel((x,y),(255, 255, 255))
 
-    show_image(img)
+    # show_image(img)
 
     rank = sorted(rgb_dict.items(), key = lambda k_v : k_v[1])
     color_set = set([colr[0] for colr in rank[-4:]])
@@ -74,7 +74,7 @@ def captcha_to_string(img):
 
     # phase2 = "phase2_" + filename
     # img.save(phase2)
-    show_image(img)
+    # show_image(img)
 
     # cut image vertically for recognition
     left = right = top = 0
@@ -103,7 +103,7 @@ def captcha_to_string(img):
             c_img = c_img.resize((c_img.size[0]*2, c_img.size[1]*2))
             c_img = c_img.filter(ImageFilter.GaussianBlur(radius=1))
 
-            show_image(c_img)
+            # show_image(c_img)
 
             char = refine(pytesseract.image_to_string(c_img, lang='eng', config='--psm 7'))
             ans += char 
