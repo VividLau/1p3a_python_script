@@ -139,9 +139,4 @@ def captcha_to_string(img):
     
 if __name__ == "__main__":
 
-    img = Image.open("catpcha.png")
-    print(captcha_to_string(img))
-
-    # img2 = Image.open("img2.png")
-    # print(captcha_to_string(img2))
-
+    # do your test

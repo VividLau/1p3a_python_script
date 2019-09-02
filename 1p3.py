@@ -161,7 +161,7 @@ def fill_captcha(browser, wait):
         browser.save_screenshot('screenshot.png')
         scrsht = Image.open("screenshot.png")
         captcha_img = scrsht.crop((left, top, right, bottom))
-        captcha_img.save("catpcha.png")
+        captcha_img.save("captcha.png")
 
         # 解码验证码，转化为字符串
         captcha_text = captcha.captcha_to_string(Image.open("catpcha.png"))
