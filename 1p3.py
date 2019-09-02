@@ -143,7 +143,7 @@ def fill_captcha(browser, wait):
 
     while res_text == "" or res_text == wrong_res: # 验证码解码错误
 
-        print(f"开始破解图形验证码，第次{trial}尝试...")
+        print(f"开始破解图形验证码，第{trial}次尝试...")
         # 重新获取验证码
         get_new_captcha = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[text()='换一个']")))
         get_new_captcha.click()
