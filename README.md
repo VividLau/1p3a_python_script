@@ -79,6 +79,11 @@ Python依赖库：selenium, pillow, pytesseract
 # LICENSE
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 
+<br/><br/>
+
+# REFERENCES:
+* 部分题库来源于 [eagleoflqj/p1a3_script](https://github.com/eagleoflqj/p1a3_script/blob/master/QA.js)
+
 
 
 
