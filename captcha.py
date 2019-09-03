@@ -137,6 +137,6 @@ def captcha_to_string(img):
             #         new_c_img = new_c_img.resize((new_c_img.size[0]*2, new_c_img.size[1]*2))
             #         print(pytesseract.image_to_string(new_c_img, lang='eng', config='--psm 7'))
     
-if __name__ == "__main__":
 
-    # do your test
+
+

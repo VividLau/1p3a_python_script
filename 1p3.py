@@ -164,7 +164,7 @@ def fill_captcha(browser, wait):
         captcha_img.save("captcha.png")
 
         # 解码验证码，转化为字符串
-        captcha_text = captcha.captcha_to_string(Image.open("catpcha.png"))
+        captcha_text = captcha.captcha_to_string(Image.open("captcha.png"))
         print(f"图形验证码破解结果: {captcha_text}")
 
         cap_input_element.send_keys(captcha_text)
