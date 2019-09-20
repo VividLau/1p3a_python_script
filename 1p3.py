@@ -117,16 +117,30 @@ def daily_question(browser, wait):
     if answer == "":
         print("今日问题未被收录入题库，跳过每日问答")
         return
+    elif type(answer) is list:
+        answer_set = set(answer)
     else:
-        print(f"答案: {answer}")
+        answer_set = set([answer])
+
 
     # 提交答案
-    try:
-        choose_btn = browser.find_element_by_xpath(f"//div[text()='  {answer}']/input")
-        choose_btn.click()
-    except selexception.NoSuchElementException:
+
+    answer = "this make no sense"
+
+    options_list = browser.find_elements_by_xpath("//div[@class='qs_option']")
+
+    for e in options_list:
+        potential_ans = e.text.strip()
+        if potential_ans in answer_set:
+            answer = potential_ans
+            choose_btn = browser.find_element_by_xpath(f"//div[text()='  {answer}']/input")
+            choose_btn.click()
+
+    if answer == "this make no sense":
         print("题库答案过期，跳过每日问答！")
         return
+    else:
+        print(f"答案: {answer}")
 
     ans_btn = browser.find_element_by_xpath("//button[@name='submit'][@type='submit']")
     ans_btn.click()
