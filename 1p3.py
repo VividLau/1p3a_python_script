@@ -6,12 +6,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common import exceptions as selexception
+from selenium.webdriver.common.keys import Keys
 from PIL import Image
 import platform
 import uuid
 import captcha
 import json
-import logging
 
 def login(browser, wait):
 
@@ -147,6 +147,9 @@ def daily_question(browser, wait):
     ans_btn = browser.find_element_by_xpath("//strong[text()='提交答案']")
     sleep(2)
     ans_btn.click()
+
+    ans_btn.send_keys(Keys.ENTER)
+
     print("完成每日问答，大米+1\n=========================")
 
 def fill_captcha(browser, wait):
@@ -228,6 +231,7 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 
 browser = Chrome(desired_capabilities=caps, chrome_options=options)
+browser.maximize_window()
 browser.get("https://www.1point3acres.com/bbs/")
 wait = WebDriverWait(browser, 10)
 
