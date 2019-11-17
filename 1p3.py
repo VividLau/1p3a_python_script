@@ -18,7 +18,7 @@ def login(browser, wait):
     if platform.system() == "Darwin" and hex(uuid.getnode()) == "0x3035add3a8d0":
         conf_file = "dev-usrname.json"
     else:
-        conf_file = "usrname.json"
+        conf_file = "usrinfo.json"
 
     print("从配置文件中获取用户名和密码...")
 
