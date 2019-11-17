@@ -1,5 +1,6 @@
 from time import sleep
 from selenium.webdriver import Chrome
+from selenium.webdriver import ChromeOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -10,6 +11,7 @@ import platform
 import uuid
 import captcha
 import json
+import logging
 
 def login(browser, wait):
 
@@ -142,7 +144,8 @@ def daily_question(browser, wait):
     else:
         print(f"答案: {answer}")
 
-    ans_btn = browser.find_element_by_xpath("//button[@name='submit'][@type='submit']")
+    ans_btn = browser.find_element_by_xpath("//strong[text()='提交答案']")
+    sleep(2)
     ans_btn.click()
     print("完成每日问答，大米+1\n=========================")
 
@@ -218,18 +221,28 @@ print("""
 # 设置为执行操作时，不需要等待页面完全加载
 caps = DesiredCapabilities().CHROME
 caps["pageLoadStrategy"] = "none"
-browser = Chrome(desired_capabilities=caps)
+
+# headless mode
+options = ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+
+browser = Chrome(desired_capabilities=caps, chrome_options=options)
 browser.get("https://www.1point3acres.com/bbs/")
 wait = WebDriverWait(browser, 10)
 
-# 执行登录，在做任何其他操作前必须先登录
-login(browser, wait)
+try:
+    # 执行登录，在做任何其他操作前必须先登录
+    login(browser, wait)
 
-# 每日签到
-daily_check_in(browser, wait)
-
-# 每日答题
-daily_question(browser, wait)
+    # 每日签到
+    daily_check_in(browser, wait)
+    
+    # 每日答题
+    daily_question(browser, wait)
+except Exception as e:
+    print(e)
+    print('关闭浏览器')
 
 # # 测试: 每日回答错误
 # test_bro = Chrome()
@@ -238,6 +251,8 @@ daily_question(browser, wait)
 # login(test_bro, wait)
 # text = test_bro.find_element_by_xpath("//body[@id='nv_plugin']/div[@id='wp']/div[@id='ct']/div[@class='nfl']/div/div/p[not(@class)]")
 # print(text.text)
+
+browser.close()
 
 print(
 """
