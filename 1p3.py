@@ -164,8 +164,7 @@ def fill_captcha(browser, wait):
     source_ele = browser.find_element_by_xpath("//div[@id='fwin_pop']")
     des_ele = browser.find_element_by_xpath("//a[text()='开通VIP']")
 
-    ActionChains(browser).drag_and_drop(source_ele, des_ele).perform()
-
+    ActionChains(browser).click_and_hold(source_ele).move_to_element(des_ele).release(des_ele).perform()
     while res_text == "" or res_text == wrong_res: # 验证码解码错误
 
         print(f"开始破解图形验证码，第{trial}次尝试...")
