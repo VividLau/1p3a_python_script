@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.common import exceptions as selexception
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from PIL import Image
 import platform
 import uuid
@@ -161,6 +161,11 @@ def fill_captcha(browser, wait):
     cap_input_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//input[@name='seccodeverify']")))
     trial = 1
 
+    source_ele = browser.find_element_by_xpath("//div[@id='fwin_pop']")
+    des_ele = browser.find_element_by_xpath("//a[text()='开通VIP']")
+
+    ActionChains(browser).drag_and_drop(source_ele, des_ele).perform()
+
     while res_text == "" or res_text == wrong_res: # 验证码解码错误
 
         print(f"开始破解图形验证码，第{trial}次尝试...")
@@ -168,7 +173,7 @@ def fill_captcha(browser, wait):
         get_new_captcha = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[text()='换一个']")))
         get_new_captcha.click()
         captcha_img_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//span[text()='输入下图中的字符']//img")))
-        sleep(1)
+        sleep(2)
 
         captcha_img_element = browser.find_element_by_xpath("//span[text()='输入下图中的字符']//img")
 
