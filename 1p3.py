@@ -161,7 +161,7 @@ def fill_captcha(browser, wait):
     cap_input_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//input[@name='seccodeverify']")))
     trial = 1
 
-    source_ele = browser.find_element_by_xpath("//div[@id='fwin_pop']")
+    source_ele = browser.find_element_by_xpath("//em[text()='每日答题']")
     des_ele = browser.find_element_by_xpath("//a[text()='开通VIP']")
 
     ActionChains(browser).click_and_hold(source_ele).move_to_element(des_ele).release(des_ele).perform()
