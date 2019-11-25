@@ -148,8 +148,6 @@ def daily_question(browser, wait):
     sleep(2)
     ans_btn.click()
 
-    ans_btn.send_keys(Keys.ENTER)
-
     print("完成每日问答，大米+1\n=========================")
 
 def fill_captcha(browser, wait):
@@ -239,18 +237,23 @@ browser.maximize_window()
 browser.get("https://www.1point3acres.com/bbs/")
 wait = WebDriverWait(browser, 10)
 
-try:
-    # 执行登录，在做任何其他操作前必须先登录
-    login(browser, wait)
 
-    # 每日签到
-    daily_check_in(browser, wait)
+# 执行登录，在做任何其他操作前必须先登录
+login(browser, wait)
+
+# 每日签到
+daily_check_in(browser, wait)
     
-    # 每日答题
-    daily_question(browser, wait)
-except Exception as e:
-    print(e)
-    print('关闭浏览器')
+# 每日答题
+c = 0
+while c < 4:
+    try:
+        daily_question(browser, wait)
+    except Exception as e:
+        print(e)
+        pass
+    sleep(10)
+    c += 1
 
 # # 测试: 每日回答错误
 # test_bro = Chrome()
