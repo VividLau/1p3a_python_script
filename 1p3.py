@@ -165,12 +165,14 @@ def fill_captcha(browser, wait):
     ActionChains(browser).click_and_hold(source_ele).move_to_element(des_ele).release(des_ele).perform()
     while res_text == "" or res_text == wrong_res: # 验证码解码错误
 
+
+        sleep(15)
+
         print(f"开始破解图形验证码，第{trial}次尝试...")
         # 重新获取验证码
         get_new_captcha = wait.until(ec.visibility_of_element_located((By.XPATH, "//a[text()='换一个']")))
         get_new_captcha.click()
         captcha_img_element = wait.until(ec.visibility_of_element_located((By.XPATH, "//span[text()='输入下图中的字符']//img")))
-        sleep(2)
 
         captcha_img_element = browser.find_element_by_xpath("//span[text()='输入下图中的字符']//img")
 
