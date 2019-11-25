@@ -251,10 +251,11 @@ c = 0
 while c < 4:
     try:
         daily_question(browser, wait)
+        break
     except Exception as e:
         print(e)
         pass
-    sleep(10)
+    sleep(5)
     c += 1
 
 # # 测试: 每日回答错误
